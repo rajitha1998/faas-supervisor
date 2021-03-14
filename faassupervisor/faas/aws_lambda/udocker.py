@@ -31,7 +31,7 @@ class Udocker():
 
     _CONTAINER_OUTPUT_FILE = SysUtils.join_paths(FileUtils.get_tmp_dir(), "container-stdout")
     _CONTAINER_NAME = "udocker_container"
-    _SCRIPT_EXEC = "/bin/sh"
+    _SCRIPT_EXEC = "/bin/bash"
 
     def __init__(self, lambda_instance):
         self.lambda_instance = lambda_instance
