@@ -78,15 +78,17 @@ class Supervisor():
     def run(self):
         """Generic method to launch the supervisor execution."""
         try:
-            if is_batch_execution() and SysUtils.is_lambda_environment():
-                # Only delegate to batch
-                self.supervisor.execute_function()
-            else:
-                self._parse_input()
-                self.supervisor.execute_function()
-                self._parse_output()
-            get_logger().info('Creating response')
-            return self.supervisor.create_response()
+            get_logger().info('Executing function')
+            self.supervisor.execute_function()
+            # if is_batch_execution() and SysUtils.is_lambda_environment():
+            #     # Only delegate to batch
+            #     self.supervisor.execute_function()
+            # else:
+            #     self._parse_input()
+            #     self.supervisor.execute_function()
+            #     self._parse_output()
+            # get_logger().info('Creating response')
+            # return self.supervisor.create_response()
         except FaasSupervisorError as fse:
             get_logger().exception(fse)
             get_logger().error('Creating error response')
