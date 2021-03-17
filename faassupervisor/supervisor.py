@@ -87,8 +87,8 @@ class Supervisor():
             #     self._parse_input()
             #     self.supervisor.execute_function()
             #     self._parse_output()
-            # get_logger().info('Creating response')
-            # return self.supervisor.create_response()
+            get_logger().info('Creating response')
+            return self.supervisor.create_response()
         except FaasSupervisorError as fse:
             get_logger().exception(fse)
             get_logger().error('Creating error response')
