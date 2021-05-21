@@ -79,6 +79,7 @@ class Supervisor():
         """Generic method to launch the supervisor execution."""
         try:
             get_logger().info('Executing function')
+            get_logger().info('params', self.parsed_event)
             self.supervisor.execute_function()
             # if is_batch_execution() and SysUtils.is_lambda_environment():
             #     # Only delegate to batch
