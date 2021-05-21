@@ -29,7 +29,6 @@ class BinarySupervisor(DefaultSupervisor):
 
     def __init__(self):
         self.output = ''
-        get_logger().info('SUPERVISOR: Initializing Binary supervisor')
 
     def _get_script_path(self):
         script_path = None
@@ -41,7 +40,6 @@ class BinarySupervisor(DefaultSupervisor):
             get_logger().info("Script file created in '%s'", script_path)
         elif FileUtils.is_file(self._OSCAR_SCRIPT_PATH):
             script_path = self._OSCAR_SCRIPT_PATH
-            get_logger().info("Script file found in '%s'", script_path)
         return script_path
 
     def execute_function(self):
