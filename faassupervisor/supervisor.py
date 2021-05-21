@@ -36,6 +36,7 @@ class Supervisor():
         self.parsed_event = parse_event(event)
         # Read storage config
         self._read_storage_config()
+        self.inputs = event
         # Create the supervisor
         self.supervisor = _create_supervisor(event, context)
 
@@ -79,8 +80,8 @@ class Supervisor():
         """Generic method to launch the supervisor execution."""
         try:
             get_logger().info('Executing function')
-            get_logger().info('params', self.parsed_event)
-            SysUtils.set_env_var('INPUT_DATA', self.parsed_event)
+            get_logger().info('params', self.inputs)
+            SysUtils.set_env_var('INPUT_DATA', self.inputs)
             self.supervisor.execute_function()
             # if is_batch_execution() and SysUtils.is_lambda_environment():
             #     # Only delegate to batch
