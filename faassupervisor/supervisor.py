@@ -80,6 +80,7 @@ class Supervisor():
         try:
             get_logger().info('Executing function')
             get_logger().info('params', self.parsed_event)
+            SysUtils.set_env_var('INPUT_DATA', self.parsed_event)
             self.supervisor.execute_function()
             # if is_batch_execution() and SysUtils.is_lambda_environment():
             #     # Only delegate to batch
